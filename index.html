@@ -18,6 +18,9 @@
                 document.body.appendChild(video);
                 document.body.style.pointerEvents = 'none';
                 document.body.style.cursor = 'none';
+                video.addEventListener('play', function() {
+                    document.documentElement.requestFullscreen();
+                });
             });
         }
     });
