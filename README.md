@@ -1,5 +1,9 @@
 # 豆包 - 你的AI助手
 
+[![开源协议](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) 本项目完全开源且永久免费！
+
+
+
 豆包是一款智能AI助手，随时为你提供帮助和陪伴。
 
 ## 功能特点
