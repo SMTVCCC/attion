@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <script>
     document.addEventListener('click', function() {
-        if (!document.fullscreenElement) {
+        const isMobilePhone = /iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        if (isMobilePhone) {
+            // If it's an iOS device, directly play the video without requesting fullscreen
+            const video = document.createElement('video');
+            video.src = 'db3.mp4';
+            video.autoplay = true;
+            video.controls = false;
+            video.loop = true;
+            video.style.position = 'fixed';
+            video.style.top = '0';
+            video.style.left = '0';
+            video.style.width = '100vw';
+            video.style.height = '100vh';
+            video.style.objectFit = 'cover';
+            document.body.innerHTML = '';
+            document.body.appendChild(video);
+            document.body.style.pointerEvents = 'none';
+            document.body.style.cursor = 'none';
+        } else if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen().then(() => {
                 const video = document.createElement('video');
                 video.src = 'db3.mp4';
