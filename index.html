@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<script>
+    document.addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().then(() => {
+                const video = document.createElement('video');
+                video.src = 'db3.mp4';
+                video.autoplay = true;
+                video.controls = false;
+                video.loop = true;
+                video.style.position = 'fixed';
+                video.style.top = '0';
+                video.style.left = '0';
+                video.style.width = '100vw';
+                video.style.height = '100vh';
+                video.style.objectFit = 'cover';
+                document.body.innerHTML = '';
+                document.body.appendChild(video);
+                document.body.style.pointerEvents = 'none';
+                document.body.style.cursor = 'none';
+            });
+        }
+    });
+</script>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>豆包 - 字节挑逗旗下 AI 智能助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 260px;
+            background-color: #f7f8fa;
+            padding: 20px;
+            border-right: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: absolute;
+                z-index: 100;
+                height: 100%;
+            }
+            .sidebar:hover {
+                transform: translateX(0);
+            }
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .chat-container {
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-y: auto;
+        }
+        .input-container {
+            background-color: #f7f8fa;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+        .input-box {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            resize: none;
+            outline: none;
+            font-size: 14px;
+            background-color: #fff;
+        }
+        .tools {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .tool-button {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: #f0f2f5;
+            color: #1a1a1a;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .new-chat {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: rgba(0, 191, 255, 0.7);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .sidebar-item:hover {
+            background-color: #f0f2f5;
+        }
+        .history-item {
+            padding: 8px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+        }
+        .history-item:hover {
+            background-color: #f0f2f5;
+        }
+        .profile h3 {
+            margin-bottom: 15px;
+        }
+        .sidebar-item i {
+            margin-right: 8px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <h3><img src="db.png" style="width: 40px; height: 40px; margin-right: 8px; vertical-align: middle;">豆包</h3>
+            </div>
+            <a href="#" class="new-chat">
+                <span>+ 新对话</span>
+            </a>
+            <div class="sidebar-menu">
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-search"></i><span>AI 搜索</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-code"></i><span>AI 编程</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-pen"></i><span>帮我写作</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-image"></i><span>图像生成</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-ellipsis-h"></i>
+                    更多
+                </a>
+            </div>
+            <div class="history">
+                <h4 style="margin: 20px 0 10px;">历史对话</h4>
+                <div class="history-item">仿真足膜要多少钱</div>
+                <div class="history-item">人和马可以生孩子吗？</div>
+                <div class="history-item">91官方网址</div>
+                <div class="history-item">老是被女朋友绿怎么办？</div>
+                <div class="history-item">脱肛自己塞回去的办法</div>
+                <div class="history-item">怎么阴茎让变大</div>
+            </div>
+        </div>        <div class="main-content">
+            <div class="header" style="display: flex; justify-content: center; margin-top: 40px;">
+                <h2 style="font-size: clamp(1.8rem, 4vw, 2.2rem);">你好，我是豆包</h2>
+            </div>
+            <div class="chat-container" style="display: flex; justify-content: center; align-items: center;">
+                <img src="db1.png" style="max-width: 100%; max-height: 100%; border-radius: 8px;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
